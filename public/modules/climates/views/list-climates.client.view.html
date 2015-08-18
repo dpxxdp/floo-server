@@ -1,0 +1,19 @@
+<section data-ng-controller="ClimatesController" data-ng-init="find()">
+    <div class="page-header">
+        <h1>Climates</h1>
+    </div>
+    <div class="list-group">
+        <a data-ng-repeat="climate in climates" data-ng-href="#!/climates/{{climate._id}}" class="list-group-item">
+			<small class="list-group-item-text">
+				Posted on
+				<span data-ng-bind="climate.created | date:'medium'"></span>
+				by
+				<span data-ng-bind="climate.user.displayName"></span>
+			</small>
+			<h4 class="list-group-item-heading" data-ng-bind="climate.name"></h4>
+        </a>
+    </div>
+    <div class="alert alert-warning text-center" data-ng-hide="!climates.$resolved || climates.length">
+    	No Climates yet, why don't you <a href="/#!/climates/create">create one</a>?
+    </div>
+</section>
